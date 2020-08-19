@@ -1,0 +1,23 @@
+<html>
+<div>
+ <table id="table"></table>
+</div>
+<script>
+ function createTable() {
+  var respnseObj = readJsonFromUrl("https://github.com/MrAsieru/TSWRoadmapTracker/projects.json");
+  var projects = responseObj.query;
+  
+  for (var i in projects){
+   var table = document.getElementById("table");
+   var tr = document.createElement("tr");
+   var td = document.createElement("td");
+   for (var j in projects[i]){
+    var txt = document.createTextNode(j);
+    td.appendChild(txt);
+    tr.appendChild(td);
+   }
+   table.appendChild(tr);
+  }
+ }
+</script>
+</html>
