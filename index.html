@@ -1,23 +1,38 @@
 <html>
+<body>
 <div>
- <table id="table"></table>
+ <table id="projTable">
+  <tr>
+   <td>ID</td>
+   <td>Name</td>
+   <td>Status</td>
+   <td>Appear date</td>
+   <td>Last update</td>
+  </tr>
+ </table>
 </div>
 <script>
- function createTable() {
-  var respnseObj = readJsonFromUrl("https://github.com/MrAsieru/TSWRoadmapTracker/projects.json");
-  var projects = responseObj.query;
+ async function createTable() {
+  var data = await fetch("https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/projects.json").then((response) => {return response.json()});
+  var proj = data.Projects;
+  console.log(data.Projects);
   
-  for (var i in projects){
-   var table = document.getElementById("table");
-   var tr = document.createElement("tr");
-   var td = document.createElement("td");
-   for (var j in projects[i]){
-    var txt = document.createTextNode(j);
-    td.appendChild(txt);
-    tr.appendChild(td);
-   }
-   table.appendChild(tr);
+  var table = document.getElementById("projTable");
+  for (var i in data.Projects){
+   var row = table.insertRow();
+   var id = row.insertCell();
+   id.innerHTML = proj[i].ID;
+   var name = row.insertCell();
+   name.innerHTML = proj[i].name;
+   var status = row.insertCell();
+   status.innerHTML = proj[i].timeline.status[proj[i].timeline.status.length - 1];
+   var appDate = row.insertCell();
+   appDate.innerHTML = proj[i].timeline.dates[0];
+   var lastUpd = row.insertCell();
+   lastUpd.innerHTML = proj[i].timeline.dates[proj[i].timeline.dates.length - 1];
   }
  }
+ createTable();
 </script>
+</body>
 </html>
