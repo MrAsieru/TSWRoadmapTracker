@@ -3,11 +3,13 @@
 {
 "ID": "test",
 "name": "Testing the table",
+"type": "Preseved Collection",
 "timeline":{"dates":["2020/08/18"],"status":["Upcoming"]}
 },
 {
 "ID": "test2",
 "name": "Testing the table2",
+"type": "Route Add-On",
 "timeline":{"dates":["2020/08/18"],"status":["In production"]}
 }
 ]
