@@ -119,7 +119,7 @@ def updateJSON():
         file.write('],"status":[')
         for status in proj.statusA:
             file.write('"%s"'%status)
-            if date != proj.statusA[len(proj.statusA)-1]:
+            if status != proj.statusA[len(proj.statusA)-1]:
                 file.write(",")
         file.write("]}}")
         if proj != mergedProjects[len(mergedProjects)-1]:
