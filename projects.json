@@ -3,12 +3,12 @@
 {
 "ID": "test",
 "name": "Testing the table",
-"timeline":[{"dates":["2020/08/18"],"status":["Upcoming"]}]
+"timeline":{"dates":["2020/08/18"],"status":["Upcoming"]}
 },
 {
 "ID": "test2",
 "name": "Testing the table2",
-"timeline":[{"dates":["2020/08/18"],"status":["In production"]}]
+"timeline":{"dates":["2020/08/18"],"status":["In production"]}
 }
 ]
 }
