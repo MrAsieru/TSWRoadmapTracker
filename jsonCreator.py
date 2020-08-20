@@ -2,6 +2,8 @@ import re
 import json
 import urllib.request
 import os
+
+URL = "https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/projects.json"
 sections = ["Next Arrival","Upcoming","In Production","In Planning"]
 newUpdate = []
 oldProjects = []
@@ -17,9 +19,22 @@ class project:
         self.dates = DATES
         self.statusA = STATUSA
 
+def askDate():
+    global date
+    f = False
+    tmpDate = ""
+    while not f:
+        tmpDate = input("Please enter the day of release, YYYY/MM/DD")
+        if re.match("\d{4}\/(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[01])",tmpDate):
+            date = tmpDate
+            f = True
+        else:
+            print("Invalid date format: xxxx/xx/xx")
+
 def getRoadmap():
+    print("Creating file from pasted data...")
     finished = 0
-    file = open("tempFile.txt","w")
+    file = open("Roadmap-%s.txt"%(date.replace("/","")),"w")
     while(finished != 2):
         rm = input("Please paste the roadmap here") #Get the new roadmap
         if rm != "":
@@ -29,15 +44,14 @@ def getRoadmap():
             finished += 1
     file.close
 
-def createObjects():
+def createNewUpdateObjects():
+    print("Creating project update list from data...")
     global date,newUpdate
-    date = input("Please enter the day of release, YYYY/MM/DD")
-    file = open("tempFile.txt","r")
+    file = open("Roadmap-%s.txt"%(date.replace("/","")),"r")
     status = 0
     for i in file:
-        i = i.replace("\n","")
-        print(i)
-        if (i in sections):
+        i = i.replace("\n","") #Remove the line ending
+        if (i in sections): #Check if line is section title
             status += 1
         else:
             TYPE = re.search("\[.*\]",i).group(0).replace("[","").replace("]","")
@@ -54,12 +68,14 @@ def createObjects():
     print("len: %s"%len(newUpdate))
 
 def getProjects():
+    print("Downloading old roadmap data...")
     global oldProjects
-    f = urllib.request.urlopen("https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/projects.json")
-    fD = ""
+    f = urllib.request.urlopen(URL) #Download json data from GitHub
+    fD = "" #For decoded data
     for line in f:
         fD = fD + line.decode("utf-8")
-    p_dict = json.loads(fD)["Projects"]
+    p_dict = json.loads(fD)["Projects"]#Dictionary from json data
+    print("Creating old project data...")
     for pr in p_dict:
         ID = pr["id"]
         NAME = pr["name"]
@@ -77,6 +93,7 @@ def getNewProjectsIDs():
     return pList
 
 def mergeProjects():
+    print("Merging project data...")
     global date, mergedProjects,newUpdate,oldProjects
     mergedProjects = oldProjects.copy()
     IDs = getNewProjectsIDs()
@@ -86,10 +103,10 @@ def mergeProjects():
             mProj.statusA.append(newUpdate[IDs.index(mProj.id)].statusA)
             IDs.remove(mProj.id)
         else:
-            if mProj.statusA[len(mProj.statusA) - 1] == "Next Arrival":
+            if (mProj.statusA[len(mProj.statusA) - 1] == "Upcoming" or mProj.statusA[len(mProj.statusA) - 1] == "Next Arrival"):
                 mProj.dates.append(date)
                 mProj.statusA.append("Released")
-            else:
+            elif (mProj.statusA[len(mProj.statusA) - 1] == "In Production" or mProj.statusA[len(mProj.statusA) - 1] == "In Planning"):
                 mProj.dates.append(date)
                 mProj.statusA.append("Canceled")
 
@@ -98,7 +115,8 @@ def mergeProjects():
 
 def updateJSON():
     global date,mergedProjects
-    file = open("updatedProjects.json","w")
+    print("Generating new json file...")
+    file = open("updatedData.json","w")
     file.write("[")
     print(mergedProjects)
     for proj in mergedProjects:
@@ -128,12 +146,22 @@ def updateJSON():
     file.close
 
 def updatedToCurrentJSON():
-    os.rename("projects.json","projectsBefore%s.json"%date)
-    os.rename("updatedProjects.json","projects.json")
-
-getRoadmap()            
-createObjects()
-getProjects()
-mergeProjects()
-updateJSON()
-updatedToCurrentJSON()
+    print("Saving last projects file...")
+    os.rename("data.json","dataBefore%s.json"%date)
+    os.rename("updatedData.json","data.json")
+def main():
+    askDate()
+    
+    getRoadmap()            
+    createNewUpdateObjects()
+    #getProjects()
+    mergeProjects()
+    updateJSON()
+    updatedToCurrentJSON()
+    
+try:
+    if __name__ == "__main__":
+        main()
+except KeyboardInterrupt:
+    print("Exiting program")
+    exit()

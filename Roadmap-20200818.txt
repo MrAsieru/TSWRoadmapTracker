@@ -1,0 +1,49 @@
+Next Arrival
+[Preserved Collection] NDD-L7 01 - Caltrain MP36PH-3C 'Baby Bullet
+[Preserved Collection] NDD-L6 01 - Caltrain MP15DC Diesel Switcher
+[Preserved Collection] GCC-R7 01 - East Coastway: Brighton - Eastbourne & Seaford
+[Preserved Collection] DBB-R6 02 - Hauptstrecke Rhein-Ruhr: Duisburg - Bochum
+[Preserved Collection] NDD-R7 01 - Peninsula Corridor: San Francisco - San Jose
+Upcoming
+[Preserved Collection] DBB-L7 02 - DB BR 155
+[Preserved Collection] GDD-L5 05 - BR Class 20 'Chopper'
+[Preserved Collection] GDD-L5 04 - BR Class 31
+[Preserved Collection] NCC-R7 01 - Long Island Rail Road: New York - Hicksville
+[Preserved Collection] NCC-L6 01 - LIRR M3 EMU
+[Preserved Collection] DBB-R6 01 - Ruhr-Sieg Nord: Hagen - Finnentrop
+[Preserved Collection] GDF-R5 02 - Tees Valley Line: Darlington - Saltburn-by-the-Sea
+[Route Add-On] GCC-R7 03 - Isle of Wight (Developed by Rivet Games)
+[Upgrade] Livery Designer additional functionality
+In Production
+[Preserved Collection] GDD-L5 01 - BR Class 33
+[Preserved Collection] GDD-L5 02 - BR Class 52 'Western'
+[Preserved Collection] GDD-L5 03 - BR Heavy Freight Pack
+[Preserved Collection] NDD-R6 01 - Canadian National Oakville Subdivision: Hamilton - Oakville
+[Preserved Collection] DBB-L7 01 - DB BR 182
+[Preserved Collection] GDG-R7 01 - Great Western Express
+[Preserved Collection] DBB-R7 02 - Main Spessart Bahn: Aschaffenburg - Gemunden
+[Preserved Collection] GDF-R5 01 - Northern Trans-Pennine: Manchester - Leeds
+[Preserved Collection] DBB-R7 01 - Rapid Transit
+[Preserved Collection] DBB-R7 03 - Rhein-Ruhr Osten: Wuppertal - Hagen
+[Preserved Collection] GDD-R7 01 - West Somerset Railway
+[Route Add-On] DBB-R7 04 - Munich - Augsburg. With BR 403 & BR 423.
+[Route Add-On] GBC-R7 01 - Southeastern High Speed: London St Pancras via Ebbsfleet to Faversham. With Class 395, Class 375.
+[Loco Add-On] DGG-L7 01 - DB BR 363 (Ruhr-Sieg Nord)
+[Loco Add-On] NDD-L7 02 - C40-8W (Sand Patch Grade)
+[Upgrade] Raildriver and external hardware support
+[Feature] Train Sim World 2 Mastery
+[Feature] Driver Logbook
+In Planning
+[Preserved Collection] DGG-L6 01 - DB BR 204 (Developed by Rivet Games)
+[Route Add-On] CBB-R7 01 - Arosa Line. With Ge 4/4 II. (Developed by Rivet Games)
+[Route Add-On] NDD-R7 02 - Cane Creek. With AC4400CW & SD40-2. (Developed by Skyhook Games)
+[Route Add-On] NDD-R5 01 - Clinchfield Railroad: Elkhorn - Dante. With SD40-2, F7 A/B.
+[Route Add-On] DBB-R7 05 - Hamburg - Lubeck. With BR 112 + Doppelstockwagen & MRCE BR 182.
+[Route Add-On] FBB-R7 01 - LGV Méditerranée: Marseille - Avignon. With TGV Duplex.
+[Loco Add-On] GCC-L7 01 - Class 313 (East Coastway)
+[Loco Add-On] GCC-L7 02 - Class 465 (Southeastern High Speed)
+[Loco Add-On] DKK-L7 01 - DB BR 101 (Schnellfahrstrecke Köln-Aachen)
+[Loco Add-On] DKK-L7 02 - DB BR 187 (Developed by Skyhook Games)
+[Route Upgrade] Bakerloo Line expanded service
+[Fix] Miles Platting
+[Fix] Cement Circle
