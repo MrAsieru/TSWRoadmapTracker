@@ -118,8 +118,8 @@ def updateJSON():
     global date,mergedProjects
     print("Generating new json file...")
     file = open("updatedData.json","w")
-    file.write("[")
-    file.write('"Projects":')
+    file.write("{")
+    file.write('"Projects":[')
     for proj in mergedProjects:
         file.write("{")
         file.write('"id":')
@@ -143,7 +143,7 @@ def updateJSON():
         file.write("]}}")
         if proj != mergedProjects[len(mergedProjects)-1]:
             file.write(",")
-    file.write("]")
+    file.write("]}")
     file.close
 
 def updatedToCurrentJSON():
