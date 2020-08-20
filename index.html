@@ -1,13 +1,33 @@
 <html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
 <body>
 <div>
  <table id="projTable">
   <tr>
-   <td>ID</td>
-   <td>Name</td>
-   <td>Status</td>
-   <td>Appear date</td>
-   <td>Last update</td>
+   <td style="width: 10%;">ID</td>
+   <td style="width: 10%;">Type</td>
+   <td style="width: 30%;">Name</td>
+   <td style="width: 10%;">Status</td>
+   <td style="width: 10%;">Appear date</td>
+   <td style="width: 10%;">Last update</td>
   </tr>
  </table>
 </div>
@@ -18,19 +38,67 @@
   console.log(data.Projects);
   
   var table = document.getElementById("projTable");
-  for (var i in data.Projects){
+  document.getElementById("projTable").style.wordWrap = "break-word";
+  for (var i in proj){
    var row = table.insertRow();
    var id = row.insertCell();
-   id.innerHTML = proj[i].ID;
+   id.innerHTML = proj[i].id;
+   var type = row.insertCell();
+   type.innerHTML = setTypeColor(proj[i].type);
    var name = row.insertCell();
    name.innerHTML = proj[i].name;
    var status = row.insertCell();
-   status.innerHTML = proj[i].timeline.status[proj[i].timeline.status.length - 1];
+   status.innerHTML = setTypeColor(proj[i].timeline.status[proj[i].timeline.status.length - 1]);
    var appDate = row.insertCell();
    appDate.innerHTML = proj[i].timeline.dates[0];
    var lastUpd = row.insertCell();
    lastUpd.innerHTML = proj[i].timeline.dates[proj[i].timeline.dates.length - 1];
   }
+ }
+ function setTypeColor(type){
+  var result,start = "";
+  switch(type) {
+   case "Preserved Collection":
+   start = '<p style="background-color:LimeGreen;">';
+   break;
+   case "Route Add-On":
+   start = '<p style="background-color:Orange;">';
+   break;
+   case "Loco Add-On":
+   start = '<p style="background-color:LightBlue;">';
+   break;
+   case "Upgrade":
+   start = '<p style="background-color:Tomato;">';
+   break;
+   case "Feature":
+   start = '<p style="background-color:Blue;">';
+   break;
+   case "Fix":
+   start = '<p style="background-color:Purple;">';
+   break;
+   case "Route Upgrade":
+   start = '<p style="background-color:Olive;">';
+   break;
+   case "Released":
+   start = '<p style="background-color:Magenta;">';
+   break;
+   case "Next Arrival":
+   start = '<p style="background-color:LimeGreen;">';
+   break;
+   case "Upcoming":
+   start = '<p style="background-color:Orange;">';
+   break;
+   case "In Production":
+   start = '<p style="background-color:Purple;">';
+   break;
+   case "In Planning":
+   start = '<p style="background-color:Blue;">';
+   break;
+   case "Canceled":
+   start = '<p style="background-color:Red;">';
+   break;
+  }
+  return (start+type+"</p>")
  }
  createTable();
 </script>
