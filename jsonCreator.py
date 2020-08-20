@@ -2,8 +2,9 @@ import re
 import json
 import urllib.request
 import os
+from shutil import copyfile
 
-URL = "https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/projects.json"
+URL = "https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/data.json"
 sections = ["Next Arrival","Upcoming","In Production","In Planning"]
 newUpdate = []
 oldProjects = []
@@ -56,10 +57,10 @@ def createNewUpdateObjects():
         else:
             TYPE = re.search("\[.*\]",i).group(0).replace("[","").replace("]","")
             try:
-                ID = re.search("\] .{4,} -",i).group(0).replace("] ","").replace(" -","")
+                ID = re.search("\] .{4,}? -",i).group(0).replace("] ","").replace(" -","")
                 NAME = re.search("- .*$",i).group(0).replace("- ","")
             except AttributeError:
-                ID = re.search(" .*$",i).group(0).replace("- ","")
+                ID = re.search("] .*$",i).group(0).replace("] ","")
                 NAME = ""
             STATUS = sections[status - 1]
             newProj = project(ID,TYPE,NAME,STATUS,[date],[STATUS])
@@ -118,7 +119,6 @@ def updateJSON():
     print("Generating new json file...")
     file = open("updatedData.json","w")
     file.write("[")
-    print(mergedProjects)
     for proj in mergedProjects:
         file.write("{")
         file.write('"id":')
@@ -147,11 +147,12 @@ def updateJSON():
 
 def updatedToCurrentJSON():
     print("Saving last projects file...")
-    os.rename("data.json","dataBefore%s.json"%date)
+    os.remove("data.json")
     os.rename("updatedData.json","data.json")
+    copyfile("data.json","data%s.json"%(date.replace("/","")))
+             
 def main():
     askDate()
-    
     getRoadmap()            
     createNewUpdateObjects()
     #getProjects()
