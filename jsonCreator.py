@@ -156,7 +156,7 @@ def main():
     askDate()
     getRoadmap()            
     createNewUpdateObjects()
-    getProjects()
+    #getProjects()
     mergeProjects()
     updateJSON()
     updatedToCurrentJSON()
