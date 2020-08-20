@@ -13,7 +13,7 @@
 </div>
 <script>
  async function createTable() {
-  var data = await fetch("https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/projects.json").then((response) => {return response.json()});
+  var data = await fetch("https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/data.json").then((response) => {return response.json()});
   var proj = data.Projects;
   console.log(data.Projects);
   

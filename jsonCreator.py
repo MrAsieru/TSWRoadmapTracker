@@ -119,6 +119,7 @@ def updateJSON():
     print("Generating new json file...")
     file = open("updatedData.json","w")
     file.write("[")
+    file.write('"Projects":')
     for proj in mergedProjects:
         file.write("{")
         file.write('"id":')
@@ -155,7 +156,7 @@ def main():
     askDate()
     getRoadmap()            
     createNewUpdateObjects()
-    #getProjects()
+    getProjects()
     mergeProjects()
     updateJSON()
     updatedToCurrentJSON()
