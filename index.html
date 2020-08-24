@@ -2,7 +2,7 @@
 <head>
 <style>
 table {
-  font-family: arial, sans-serif;
+font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -19,167 +19,167 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
-<div id="buttonsDiv">
- <button onclick="showInfo()">Show</button>
+<div id="toolBar">
+</div>
+<div id="content" style="width:100%; height:100%;" onclick="changePageState(0);">
+ <div id="infoDivContainer" style="position:fixed; width:100%; height:100%; z-index:1; background-color: rgba(0,0,0,0.5)">
+  <div id="infoDiv" style="position:fixed; border-style:solid; width:50%; left:50%; transform:translate(-50%,0); background: #fff;opacity: 1;padding-left: 5%;padding-bottom: 5%;padding-right: 5%;padding-top: 2%;" onclick="event.stopPropagation();">
+   <h1>Project</h1>
+   <div id="infoID">ID: none</div><br>
+   <div id="infoType">Type: none</div><br>
+   <div id="infoName">Name: none</div><br>
+   <div id="infoStatus">Status: none</div><br>
+   <div id="infoTimeline">Timeline: </div>
+
+   <div id="infoTableDiv">
+    <table id="infoTable">
+     <tr>
+      <th>Date</th>
+      <th>Status</th>
+     </tr>
+    </table>
+   </div>
+  </div>
+ </div>
+ 
+
+ <div id="tablesDiv" style="margin-left: 16px;margin-right: 16px;margin-top: 16px;margin-bottom: 16px; z-index: 0" onclick="event.stopPropagation();">
+  <div id="nextAr" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
+   <table id="projNextArTable">
+    <tr>
+     <th colspan="6">Next Arrival:</th>
+    </tr>
+    <tr>
+     <th style="width: 10%;">ID</th>
+     <th style="width: 10%;">Type</th>
+     <th style="width: 30%;">Name</th>
+     <th style="width: 10%;">Status</th>
+     <th style="width: 10%;">Appear date</th>
+     <th style="width: 10%;">Last update</th>
+    </tr>
+   </table>
+  </div>
+
+  <div id="upcoming" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
+   <table id="projUpcomingTable">
+    <tr>
+     <th colspan="6">Upcoming:</th>
+    </tr>
+    <tr>
+     <th style="width: 10%;">ID</th>
+     <th style="width: 10%;">Type</th>
+     <th style="width: 30%;">Name</th>
+     <th style="width: 10%;">Status</th>
+     <th style="width: 10%;">Appear date</th>
+     <th style="width: 10%;">Last update</th>
+    </tr>
+   </table>
+  </div>
+
+  <div id="inProd" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
+   <table id="projInProdTable">
+    <tr>
+     <th colspan="6">In Production:</th>
+    </tr>
+    <tr>
+     <th style="width: 10%;">ID</th>
+     <th style="width: 10%;">Type</th>
+     <th style="width: 30%;">Name</th>
+     <th style="width: 10%;">Status</th>
+     <th style="width: 10%;">Appear date</th>
+     <th style="width: 10%;">Last update</th>
+    </tr>
+   </table>
+  </div>
+
+  <div id="inPlan" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
+   <table id="projInPlanTable">
+    <tr>
+     <th colspan="6">In Planning:</th>
+    </tr>
+    <tr>
+     <th style="width: 10%;">ID</th>
+     <th style="width: 10%;">Type</th>
+     <th style="width: 30%;">Name</th>
+     <th style="width: 10%;">Status</th>
+     <th style="width: 10%;">Appear date</th>
+     <th style="width: 10%;">Last update</th>
+    </tr>
+   </table>
+  </div>
+
+  <div id="rel" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
+   <table id="projRelTable">
+    <tr>
+     <th colspan="6">Released:</th>
+    </tr>
+    <tr>
+     <th style="width: 10%;">ID</th>
+     <th style="width: 10%;">Type</th>
+     <th style="width: 30%;">Name</th>
+     <th style="width: 10%;">Status</th>
+     <th style="width: 10%;">Appear date</th>
+     <th style="width: 10%;">Last update</th>
+    </tr>
+   </table>
+  </div>
+
+  <div id="can" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
+   <table id="projCanTable">
+    <tr>
+     <th colspan="6">Canceled:</th>
+    </tr>
+    <tr>
+     <th style="width: 10%;">ID</th>
+     <th style="width: 10%;">Type</th>
+     <th style="width: 30%;">Name</th>
+     <th style="width: 10%;">Status</th>
+     <th style="width: 10%;">Appear date</th>
+     <th style="width: 10%;">Last update</th>
+    </tr>
+   </table>
+  </div>
+ </div>
 </div>
 
-<div id="infoDiv">
-<script>
- function printInfo(id){
-  let index = arrayFind(proj,id);
-  document.write("ID: "+id+"<br>");
-  document.write("Type: "+proj[index].type+"<br>");
-  document.write("Name: "+proj[index].name+"<br>");
-  document.write("Status: "+proj[index].timeline.status[proj[index].timeline.status.length - 1]+"<br>");
-  
-  let table = tabInfoUpdates;
-  console.log(proj[index].timeline.dates);
-  for (var i in proj[index].timeline.dates) {
-   console.log(i);
-   let row = table.insertRow();
-   let date = row.insertCell();
-   date.innerHTML = proj[index].timeline.dates[i];
-   let status = row.insertCell();
-   status = proj[index].timeline.status[i];
-  }
- }
-</script>
-<div id="infoTableDiv">
- <table id="infoTable">
-  <tr>
-   <th>Date</th>
-   <th>Status</th>
-  </tr>
- </table>
-</div>
-</div>
-
-<div id="tablesDiv" style="margin-left: 16px;margin-right: 16px;margin-top: 16px;margin-bottom: 16px;">
- <div id="nextAr" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
-  <table id="nextArTable">
-   <tr>
-    <th colspan="6">Next Arrival:</th>
-   </tr>
-   <tr>
-    <th style="width: 10%;">ID</th>
-    <th style="width: 10%;">Type</th>
-    <th style="width: 30%;">Name</th>
-    <th style="width: 10%;">Status</th>
-    <th style="width: 10%;">Appear date</th>
-    <th style="width: 10%;">Last update</th>
-   </tr>
-  </table>
- </div>
-
- <div id="upcoming" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
-  <table id="upcomingTable">
-   <tr>
-    <th colspan="6">Upcoming:</th>
-   </tr>
-   <tr>
-    <th style="width: 10%;">ID</th>
-    <th style="width: 10%;">Type</th>
-    <th style="width: 30%;">Name</th>
-    <th style="width: 10%;">Status</th>
-    <th style="width: 10%;">Appear date</th>
-    <th style="width: 10%;">Last update</th>
-   </tr>
-  </table>
- </div>
-
- <div id="inProd" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
-  <table id="inProdTable">
-   <tr>
-    <th colspan="6">In Production:</th>
-   </tr>
-   <tr>
-    <th style="width: 10%;">ID</th>
-    <th style="width: 10%;">Type</th>
-    <th style="width: 30%;">Name</th>
-    <th style="width: 10%;">Status</th>
-    <th style="width: 10%;">Appear date</th>
-    <th style="width: 10%;">Last update</th>
-   </tr>
-  </table>
- </div>
-
- <div id="inPlan" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
-  <table id="inPlanTable">
-   <tr>
-    <th colspan="6">In Planning:</th>
-   </tr>
-   <tr>
-    <th style="width: 10%;">ID</th>
-    <th style="width: 10%;">Type</th>
-    <th style="width: 30%;">Name</th>
-    <th style="width: 10%;">Status</th>
-    <th style="width: 10%;">Appear date</th>
-    <th style="width: 10%;">Last update</th>
-   </tr>
-  </table>
- </div>
-
- <div id="rel" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
-  <table id="relTable">
-   <tr>
-    <th colspan="6">Released:</th>
-   </tr>
-   <tr>
-    <th style="width: 10%;">ID</th>
-    <th style="width: 10%;">Type</th>
-    <th style="width: 30%;">Name</th>
-    <th style="width: 10%;">Status</th>
-    <th style="width: 10%;">Appear date</th>
-    <th style="width: 10%;">Last update</th>
-   </tr>
-  </table>
- </div>
-
- <div id="can" style="margin-top: 8px;margin-left: 8px;margin-right: 8px;margin-bottom: 8px;">
-  <table id="canTable">
-   <tr>
-    <th colspan="6">Canceled:</th>
-   </tr>
-   <tr>
-    <th style="width: 10%;">ID</th>
-    <th style="width: 10%;">Type</th>
-    <th style="width: 30%;">Name</th>
-    <th style="width: 10%;">Status</th>
-    <th style="width: 10%;">Appear date</th>
-    <th style="width: 10%;">Last update</th>
-   </tr>
-  </table>
- </div>
-</div>
 
 <script>
- async function createTable() {  
+ async function createProjectTable() {  
   let data = await fetch("https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/data.json").then((response) => {return response.json()});
   proj = data.Projects;
-  document.getElementById("nextArTable").style.wordWrap = "break-word";
-  document.getElementById("upcomingTable").style.wordWrap = "break-word";
-  document.getElementById("inProdTable").style.wordWrap = "break-word";
-  document.getElementById("inPlanTable").style.wordWrap = "break-word";
-  document.getElementById("relTable").style.wordWrap = "break-word";
-  document.getElementById("canTable").style.wordWrap = "break-word";
+  document.getElementById("projNextArTable").style.wordWrap = "break-word";
+  document.getElementById("projUpcomingTable").style.wordWrap = "break-word";
+  document.getElementById("projInProdTable").style.wordWrap = "break-word";
+  document.getElementById("projInPlanTable").style.wordWrap = "break-word";
+  document.getElementById("projRelTable").style.wordWrap = "break-word";
+  document.getElementById("projCanTable").style.wordWrap = "break-word";
+  
+  var rowClickHandler = function(row) {
+   return function() {
+    projectSelected(row.getElementsByTagName("td")[0].innerHTML);
+   };
+  };
+  
   for (var i in proj){
-   let table = selectTable(proj[i].timeline.status[proj[i].timeline.status.length - 1]);
+   let table = document.getElementById(projectTableDict[proj[i].timeline.status[proj[i].timeline.status.length - 1]]);
    let row = table.insertRow();
    let id = row.insertCell();
    id.innerHTML = proj[i].id;
    let type = row.insertCell();
-   type.innerHTML = setTypeColor(proj[i].type);
+   type.innerHTML = setProjectTypeColor(proj[i].type);
    let name = row.insertCell();
    name.innerHTML = proj[i].name;
    let status = row.insertCell();
-   status.innerHTML = setTypeColor(proj[i].timeline.status[proj[i].timeline.status.length - 1]);
+   status.innerHTML = proj[i].timeline.status[proj[i].timeline.status.length - 1]
    let appDate = row.insertCell();
    appDate.innerHTML = proj[i].timeline.dates[0];
    let lastUpd = row.insertCell();
-   lastUpd.innerHTML = proj[i].timeline.dates[proj[i].timeline.dates.length - 1];
+   lastUpd.innerHTML = proj[i].timeline.dates[findLastStatusChange(proj[i].timeline)];
+   row.onclick = rowClickHandler(row);
   }
  }
- function setTypeColor(type){
+ 
+ function setProjectTypeColor(type){
   let result,start = "";
   switch(type) {
    case "Preserved Collection":
@@ -209,31 +209,6 @@ tr:nth-child(even) {
   }
   return (start+type+"</p>")
  }
-
- function selectTable(status){
-  var result = "";
-  switch(status) {
-   case "Next Arrival":
-   result = "nextArTable";
-   break;
-   case "Upcoming":
-   result = "upcomingTable";
-   break;
-   case "In Production":
-   result = "inProdTable";
-   break;
-   case "In Planning":
-   result = "inPlanTable";
-   break;
-   case "Released":
-   result = "relTable";
-   break;
-   case "Canceled":
-   result = "canTable";
-   break;
-  }
-  return document.getElementById(result);
- }
  
  function arrayFind(data,val){
   var i = 0;
@@ -241,8 +216,9 @@ tr:nth-child(even) {
   while(i < data.length && !finished) {
    if (data[i].id == val) {
     finished = true;
+   } else {
+    i++;
    }
-   i++;
   }
   if (finished) {
    return i;
@@ -251,29 +227,86 @@ tr:nth-child(even) {
   }
  }
 
- function changePageState(state){
-  console.log(document.getElementById("tablesDiv"));
-  console.log(document.getElementById("infoDiv"));
-  switch(state){
-  case 0:
-  document.getElementById("tablesDiv").style.display = "block";
-  document.getElementById("infoDiv").style.display = "none";
-  break;
-  case 1:
-  document.getElementById("tablesDiv").style.display = "none";
-  document.getElementById("infoDiv").style.display = "bock";
-  break;
+ function changePageState(newState){
+  switch(newState){
+   case 0:<!-- Show table -->
+    document.getElementById("infoDivContainer").style.display = "none";
+    state = 0;
+    break;
+   case 1:<!-- Show info -->
+    document.getElementById("infoDivContainer").style.display = "";
+    state = 1;
+    break;
   }
  }
+ 
+ function printProjectInfo(id){
+  console.log(state+" "+id);
+  let index = arrayFind(proj,id);
+  //Print info
+  document.getElementById('infoID').innerHTML = "ID: "+id;
+  document.getElementById('infoType').innerHTML = "Type: "+proj[index].type;
+  document.getElementById('infoName').innerHTML = "Name: "+proj[index].name;
+  document.getElementById('infoStatus').innerHTML = "Status: "+proj[index].timeline.status[proj[index].timeline.status.length - 1];
 
- function showInfo(){
-  printInfo("NDD-L7 01");  
+  //Add rows
+  let table = document.getElementById("infoTable");
+  for (var i in proj[index].timeline.dates) {
+   let row = table.insertRow();
+   let date = row.insertCell();
+   date.innerHTML = proj[index].timeline.dates[i];
+   let status = row.insertCell();
+   status.innerHTML = proj[index].timeline.status[i];
+  }  
+ }
+ 
+ function clearProjectInfo() {
+  document.getElementById('infoID').innerHTML = "ID: none";
+  document.getElementById('infoType').innerHTML = "Type: none";
+  document.getElementById('infoName').innerHTML = "Name: none";
+  document.getElementById('infoStatus').innerHTML = "Status: none";
+  let table = document.getElementById("infoTable");
+  let rowL = table.rows.length;
+  for (i = 1; i < rowL; i++){
+   table.deleteRow(-1);
+  } 
+ }
+ 
+ function  findLastStatusChange(timeline){
+  let i = timeline.dates.length - 1;
+  let found = false;
+  let lastStatus = timeline.status[i];
+  while(i >= 0 && !found){
+   if (timeline.status[i] != lastStatus){
+    found = true;
+   } else {
+    i--;
+   }
+  }
+  return ++i;
+ }
+ 
+ function projectSelected(id){
+  if (state == 0){
+   clearProjectInfo();
+   printProjectInfo(id);
+  }
+  
   changePageState(1);
  }
 
  var proj = "";
- var tabInfoUpdates = document.getElementById("infoTable");
- createTable();
+ var state = 0; //ProjectTable = 0, ProjectInfo = 1
+ var projectTableDict = {
+  "Next Arrival": "projNextArTable",
+  "Upcoming": "projUpcomingTable",
+  "In Production": "projInProdTable",
+  "In Planning": "projInPlanTable",
+  "Released": "projRelTable",
+  "Canceled": "projCanTable"
+ }
+ changePageState(0); //Hide infoDivContainer
+ createProjectTable();
 </script>
 </body>
 </html>
