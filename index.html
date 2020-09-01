@@ -5,9 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <style>
    table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
-    
    }
 
    td, th {
@@ -26,12 +24,75 @@
    
    body {
     margin:0px;
+    background-image: url("background/background.gif");
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+   }
+   
+   .nextArrivalTab th{
+    background-color: #1fecff;
+   }   
+   .nextArrivalTab tr:nth-child(even){
+    background-color: #9bf6ff;
+   }
+   .nextArrivalTab tr:nth-child(odd){
+    background-color: #c2faff;
+   }
+   
+   .UpcomingTab th{
+    background-color: #745cff;
+   }   
+   .UpcomingTab tr:nth-child(even){
+    background-color: #bdb2ff;
+   }
+   .UpcomingTab tr:nth-child(odd){
+    background-color: #eeebff;
+   }
+   
+   .inProductionTab th{
+    background-color: #f9ff47;
+   }   
+   .inProductionTab tr:nth-child(even){
+    background-color: #fdffb6;
+   }
+   .inProductionTab tr:nth-child(odd){
+    background-color: #feffeb;
+   }
+   
+   .inPlanningTab th{
+    background-color: #ff9a1f;
+   }   
+   .inPlanningTab tr:nth-child(even){
+    background-color: #ffd6a5;
+   }
+   .inPlanningTab tr:nth-child(odd){
+    background-color: #ffedd6;
+   }
+   
+   .releasedTab th{
+    background-color: #44ff1f;
+   }   
+   .releasedTab tr:nth-child(even){
+    background-color: #caffbf;
+   }
+   .releasedTab tr:nth-child(odd){
+    background-color: #eeffeb;
+   }
+   
+   .canceledTab th{
+    background-color: #ff1f1f;
+   }   
+   .canceledTab tr:nth-child(even){
+    background-color: #ffadad;
+   }
+   .canceledTab tr:nth-child(odd){
+    background-color: #ffd6d6;
    }
   </style>
  </head>
  <body>
-  <div id="infoDivContainer" style="position:fixed; width:100vw; height:100vh; z-index:1; background-color: rgba(0,0,0,0.5)" onclick="changeInfoState(0);">
-   <div id="projectInfoDiv" style="position:fixed; border-style:solid; width:50vw; max-height: 90vh; left:50vw; transform:translate(-50vw,0); background: #fff;opacity: 1;padding-left: 5vw;padding-bottom: 5vh;padding-right: 5vw;padding-top: 2vh;overflow: auto;" onclick="event.stopPropagation();">
+  <div id="infoDivContainer" style="position:fixed; width:100vw; height:100vh; z-index:1; background-color:rgba(0,0,0,0.5);" onclick="changeInfoState(0);">
+   <div id="projectInfoDiv" style="position:fixed; border-style:solid; width:55vw; max-height:90vh; left:50vw; transform:translate(-50%,0); background:#fff; opacity:1; padding-left:2vw; padding-bottom:5vh; padding-right:2vw; padding-top:2vh; overflow:auto; display:none;" onclick="event.stopPropagation();">
     <h1>Project</h1>
     <div id="projectInfoID">ID: none</div><br>
     <div id="projectInfoType">Type: none</div><br>
@@ -55,65 +116,69 @@
     </div>
    
    </div>
-   <div id="roadmapInfoDiv" style="position:fixed; border-style:solid; width:50vw; max-height: 90vh; left:50vw; transform:translate(-50vw,0); background: #fff;opacity: 1;padding-left: 5vw;padding-bottom: 5vh;padding-right: 5vw;padding-top: 2vh;overflow: auto;" onclick="event.stopPropagation();">
+   <div id="roadmapInfoDiv" style="position:fixed; border-style:solid; width:55vw; max-height:90vh; left:50vw; transform:translate(-50%,0); background:#fff; opacity:1; padding-left:2vw; padding-bottom:5vh; padding-right:2vw;padding-top:2vh; overflow:auto; display:none;" onclick="event.stopPropagation();">
     <h1>Roadmap</h1>
     <div id="roadmapInfoDate">Release date: none</div>
-    <table id="roadmapInfoNATable">
+    <table id="roadmapInfoNATable" class="nextArrivalTab" style="width:100%;">
      <tr>
       <th colspan="3">Next Arrival</th>
      </tr>
      <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Type</th>
+      <th style="width: 40%">ID</th>
+      <th style="width: 40%">Name</th>
+      <th style="width: 20%">Type</th>
      </tr>
     </table>
-    <table id="roadmapInfoUPTable">
+    <table id="roadmapInfoUPTable" class="upcomingTab" style="width:100%;">
      <tr>
       <th colspan="3">Upcoming</th>
      </tr>
      <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Type</th>
+      <th style="width: 40%">ID</th>
+      <th style="width: 40%">Name</th>
+      <th style="width: 20%">Type</th>
      </tr>
     </table>
-    <table id="roadmapInfoPRTable">
+    <table id="roadmapInfoPRTable" class="inProductionTab" style="width:100%;">
      <tr>
       <th colspan="3">In Production</th>
      </tr>
      <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Type</th>
+      <th style="width: 40%">ID</th>
+      <th style="width: 40%">Name</th>
+      <th style="width: 20%">Type</th>
      </tr>
     </table>
-    <table id="roadmapInfoPLTable">
+    <table id="roadmapInfoPLTable" class="inPlanningTab" style="width:100%;">
      <tr>
       <th colspan="3">In Planning</th>
      </tr>
      <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Type</th>
+      <th style="width: 40%">ID</th>
+      <th style="width: 40%">Name</th>
+      <th style="width: 20%">Type</th>
      </tr>
     </table>
    </div>
+   <div id="loadingDiv" style="height:100%; background-color:rgba(255,255,255,0.7);">
+    <div style="transform:translate(50vw,50vh);width:20%;height:20%;">Loading...</div>
+   </div>
   </div>
-  <div>
+  <div style="background-color:rgba(255,255,255,0.5); margin-left:1vw; margin-right:1vw; padding-left:1vw;">
    <h1 style="display:inline;">TSW Roadmap Tracker</h1>
    <p id="barLastUpdate" style="display:inline;">Last update: none</p>
   </div>
-  <div id="toolBar" style="width:100vw;">
+  <div id="toolBar" style="background-color:rgba(255,255,255,0.5);margin-left:1vw;margin-right:1vw;">
    <button id="btnProjects" onclick="changePage(0)">Projects</button>
    <button id="btnRoadmaps" onclick="changePage(1)">Roadmaps</button>
+   <button id="btnSearch" onclick="changePage(2)">Search</button>
    <button id="btnAbout" onclick="changePage(2)">About</button>
   </div>
-  <div id="content" style="height:auto;margin-left: 1vw;margin-right: 1vw;margin-bottom: 2vh;">
+  <div id="content" style="height:auto; margin-left:1vw;margin-right:1vw; margin-bottom:2vh; background-color:rgba(255,255,255,0.5);">
    <div id="projectsContainer">
-    <div id="projectTablesDiv" style="z-index: 0" onclick="event.stopPropagation();">
+    <div id="projectTablesDiv" style="z-index: 0; width: 100%;" onclick="event.stopPropagation();">
      <div id="nextAr" style="margin-top: 1vh;margin-bottom: 1vh;width: 100%;">
-      <table id="projNextArTable">
+      <table id="projNextArTable" class="nextArrivalTab"style="overflow-wrap:break-word; width:100%;">
        <tr>
         <th colspan="6">Next Arrival:</th>
        </tr>
@@ -129,106 +194,137 @@
      </div>
 
      <div id="upcoming" style="margin-top: 1vh;margin-bottom: 1vh;">
-      <table id="projUpcomingTable">
+      <table id="projUpcomingTable" class="upcomingTab" style="overflow-wrap:break-word; width:100%;">
        <tr>
         <th colspan="6">Upcoming:</th>
        </tr>
        <tr>
-        <th style="width: 10vw;">ID</th>
-        <th style="width: 10vw;">Type</th>
-        <th style="width: 30vw;">Name</th>
-        <th style="width: 10vw;">Status</th>
-        <th style="width: 10vw;">Appear date</th>
-        <th style="width: 10vw;">Last update</th>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 10%;">Type</th>
+        <th style="width: 50%;">Name</th>
+        <th style="width: 10%;">Status</th>
+        <th style="width: 10%;">Appear date</th>
+        <th style="width: 10%;">Last update</th>
        </tr>
       </table>
      </div>
 
      <div id="inProd" style="margin-top: 1vh;margin-bottom: 1vh;">
-      <table id="projInProdTable">
+      <table id="projInProdTable" class="inProductionTab" style="overflow-wrap:break-word; width:100%;">
        <tr>
         <th colspan="6">In Production:</th>
        </tr>
        <tr>
-        <th style="width: 10vw;">ID</th>
-        <th style="width: 10vw;">Type</th>
-        <th style="width: 30vw;">Name</th>
-        <th style="width: 10vw;">Status</th>
-        <th style="width: 10vw;">Appear date</th>
-        <th style="width: 10vw;">Last update</th>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 10%;">Type</th>
+        <th style="width: 50%;">Name</th>
+        <th style="width: 10%;">Status</th>
+        <th style="width: 10%;">Appear date</th>
+        <th style="width: 10%;">Last update</th>
        </tr>
       </table>
      </div>
 
      <div id="inPlan" style="margin-top: 1vh;margin-bottom: 1vh;">
-      <table id="projInPlanTable">
+      <table id="projInPlanTable" class="inPlanningTab" style="overflow-wrap:break-word; width:100%;">
        <tr>
         <th colspan="6">In Planning:</th>
        </tr>
        <tr>
-        <th style="width: 10vw;">ID</th>
-        <th style="width: 10vw;">Type</th>
-        <th style="width: 30vw;">Name</th>
-        <th style="width: 10vw;">Status</th>
-        <th style="width: 10vw;">Appear date</th>
-        <th style="width: 10vw;">Last update</th>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 10%;">Type</th>
+        <th style="width: 50%;">Name</th>
+        <th style="width: 10%;">Status</th>
+        <th style="width: 10%;">Appear date</th>
+        <th style="width: 10%;">Last update</th>
        </tr>
       </table>
      </div>
 
      <div id="rel" style="margin-top: 1vh;margin-bottom: 1vh;">
-      <table id="projRelTable">
+      <table id="projRelTable" class="releasedTab" style="overflow-wrap:break-word; width:100%;">
        <tr>
         <th colspan="6">Released:</th>
        </tr>
        <tr>
-        <th style="width: 10vw;">ID</th>
-        <th style="width: 10vw;">Type</th>
-        <th style="width: 30vw;">Name</th>
-        <th style="width: 10vw;">Status</th>
-        <th style="width: 10vw;">Appear date</th>
-        <th style="width: 10vw;">Last update</th>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 10%;">Type</th>
+        <th style="width: 50%;">Name</th>
+        <th style="width: 10%;">Status</th>
+        <th style="width: 10%;">Appear date</th>
+        <th style="width: 10%;">Last update</th>
        </tr>
       </table>
      </div>
 
      <div id="can" style="margin-top: 1vh;margin-bottom: 1vh;">
-      <table id="projCanTable">
+      <table id="projCanTable" class="canceledTab" style="overflow-wrap:break-word; width:100%;">
        <tr>
         <th colspan="6">Canceled:</th>
        </tr>
        <tr>
-        <th style="width: 10vw;">ID</th>
-        <th style="width: 10vw;">Type</th>
-        <th style="width: 30vw;">Name</th>
-        <th style="width: 10vw;">Status</th>
-        <th style="width: 10vw;">Appear date</th>
-        <th style="width: 10vw;">Last update</th>
+        <th style="width: 10%;">ID</th>
+        <th style="width: 10%;">Type</th>
+        <th style="width: 50%;">Name</th>
+        <th style="width: 10%;">Status</th>
+        <th style="width: 10%;">Appear date</th>
+        <th style="width: 10%;">Last update</th>
        </tr>
       </table>
      </div>
     </div>
    </div>
-   <div id="roadmapsContainer">
+   <div id="roadmapsContainer" style="display:none;">
     <div id="roadmapTablesDiv" onclick="changeInfoState(1,1)">
-     <table id="roadTable" style="width:100%;">
+     <table id="roadTable" style="overflow-wrap:break-word; width:100%;">
       <tr>
        <th>Roadmap release</th>
        <th>Next Arrival #</th>
        <th>Upcoming #</th>
        <th>In Production #</th>
        <th>In Planning #</th>
+       <th>Total</th>
       </tr>
      </table>
     </div>
    </div>
-   <div id="aboutContainer">
+   <div id="searchContainer" style="display:none">
+    <div id="searchTab">
+     Search by ID:
+     <form>
+      <input type="text" id="searchID" name="searchID">
+      <input type="sumbit" value="Search">
+     </form>
+     Search by name:
+     <form>
+      <input type="text" id="searchName" name="searchName">
+      <input type="sumbit" value="Search">
+     </form>
+     Sort the projects:
+     <form>
+      <input list="types">
+      <input list="status">
+      <input list="countries">
+      <input list="tractions">
+      <input list="tractions">
+      <input list="years">      
+     </form>
+    </div>
+   </div>
+   <div id="aboutContainer" style="display:none;">
     Please put "about" info here:
    </div>
   </div>
   <script>
    var projectsJSON = "";
    var roadmapsJSON = "";
+   var typesCodes = "";
+   var statusCodes = "";
+   var regionsCodes = "";
+   var tractionsCodes = "";
+   var addOnCodes = "";
+   var yearsCodes = "";
+   
    var infoState = 0; //0:ProjectTable, 1:ProjectInfo
    var pageState = 0; //0:Projects, 1:Roadmaps, 2:About
    
@@ -245,52 +341,62 @@
     let data = await fetch("https://raw.githubusercontent.com/MrAsieru/TSWRoadmapTracker/master/data.json").then((response) => {return response.json()});
     projectsJSON = data.Projects;
     roadmapsJSON = data.Roadmaps;
+    getCodes(data.Codes);
     createProjectTable();
     createRoadmapTable();
     
     document.getElementById("barLastUpdate").innerHTML = "Last update: "+data.LastUpdate;
     
-    let width = ((window.innerWidth * ((100 * document.body.clientWidth) / window.innerWidth)) / 100);
-    document.getElementById("projectTablesDiv").style.width = width;
-    document.getElementById("roadmapTablesDiv").style.width = width;
-    
-    changeInfoState(0); //Hide infoDivContainer
+    document.getElementById("infoDivContainer").style.display = "none";
+    document.getElementById("loadingDiv").style.display = "none";
+
    }
    
    function changePage(newPage){
     switch(newPage){
-     case 0:
+     case 0: <!-- Projects -->
       document.getElementById("projectsContainer").style.display = "";
       document.getElementById("roadmapsContainer").style.display = "none";
+      document.getElementById("searchContainer").style.display = "none";
       document.getElementById("aboutContainer").style.display = "none";
       pageState = 0;
       break;
-     case 1:
+     case 1: <!-- Roadmaps -->
       document.getElementById("projectsContainer").style.display = "none";
       document.getElementById("roadmapsContainer").style.display = "";
+      document.getElementById("searchContainer").style.display = "none";
       document.getElementById("aboutContainer").style.display = "none";
       pageState = 1;
       break;
-     case 2:
+     case 2: <!-- Search -->
       document.getElementById("projectsContainer").style.display = "none";
       document.getElementById("roadmapsContainer").style.display = "none";
+      document.getElementById("searchContainer").style.display = "";
+      document.getElementById("aboutContainer").style.display = "none";
+      pageState = 3;
+      break;
+     case 3: <!-- About -->
+      document.getElementById("projectsContainer").style.display = "none";
+      document.getElementById("roadmapsContainer").style.display = "none";
+      document.getElementById("searchContainer").style.display = "none";
       document.getElementById("aboutContainer").style.display = "";
-      pageState = 2;
+      pageState = 3;
       break;
     }
    }
    
+   function getCodes(codes){
+    
+   }
+   
    function createProjectTable() {  
-    document.getElementById("projNextArTable").style.wordWrap = "break-word";
-    document.getElementById("projUpcomingTable").style.wordWrap = "break-word";
-    document.getElementById("projInProdTable").style.wordWrap = "break-word";
-    document.getElementById("projInPlanTable").style.wordWrap = "break-word";
-    document.getElementById("projRelTable").style.wordWrap = "break-word";
-    document.getElementById("projCanTable").style.wordWrap = "break-word";
-
     let rowClickHandler = function(row) {
-     return function() {
-      projectSelected(row.getElementsByTagName("td")[0].innerHTML);
+     return function() {      
+      if (row.getElementsByTagName("td")[0].innerHTML != "none") {
+       projectSelected(row.getElementsByTagName("td")[0].innerHTML);
+      } else {
+       projectSelected(row.getElementsByTagName("td")[2].innerHTML);
+      }
      };
     };
 
@@ -298,11 +404,19 @@
      let table = document.getElementById(projectTableDict[projectsJSON[i].timeline.status[projectsJSON[i].timeline.status.length - 1]]);
      let row = table.insertRow();
      let id = row.insertCell();
-     id.innerHTML = projectsJSON[i].id;
+     if (projectsJSON[i].name != ""){
+      id.innerHTML = projectsJSON[i].id;
+     } else {
+      id.innerHTML = "none";
+     }     
      let type = row.insertCell();
-     type.innerHTML = setProjectTypeColor(projectsJSON[i].type);
+     type.innerHTML = projectsJSON[i].type;
      let name = row.insertCell();
-     name.innerHTML = projectsJSON[i].name;
+     if (projectsJSON[i].name != ""){
+      name.innerHTML = projectsJSON[i].name;
+     } else {
+      name.innerHTML = projectsJSON[i].id;
+     }     
      let status = row.insertCell();
      status.innerHTML = projectsJSON[i].timeline.status[projectsJSON[i].timeline.status.length - 1]
      let appDate = row.insertCell();
@@ -319,7 +433,7 @@
     
     let rowClickHandler = function(row) {
      return function() {
-      roadmapSelected(row.getElementsByTagName("td")[0].innerHTML);
+      roadmapSelected(row.getElementsByTagName("td")[0].innerHTML);      
      };
     };
     
@@ -335,8 +449,14 @@
      prNum.innerHTML = roadmapsJSON[i].Projects.InProduction.length;
      let plNum = row.insertCell();
      plNum.innerHTML = roadmapsJSON[i].Projects.InPlanning.length;
+     let total = row.insertCell();
+     total.innerHTML = roadmapsJSON[i].Projects.NextArrival.length + roadmapsJSON[i].Projects.Upcoming.length + roadmapsJSON[i].Projects.InProduction.length + roadmapsJSON[i].Projects.InPlanning.length;
      row.onclick = rowClickHandler(row);
     }
+   }
+   
+   function createSearchPage(){
+    
    }
 
    function setProjectTypeColor(type){
@@ -389,19 +509,21 @@
 
    function changeInfoState(newState,page){
     switch(newState){
-     case 0:<!-- Show table -->
+     case 0: <!-- Show pages -->
       document.getElementById("infoDivContainer").style.display = "none";
       document.getElementById("projectInfoDiv").style.display = "none";
       document.getElementById("roadmapInfoDiv").style.display = "none";
       infoState = 0;
       break;
-     case 1:<!-- Show info -->
+     case 1: <!-- Show info -->
       switch(page){
-       case 0:
+       case 0: <!-- Project info -->
         document.getElementById("projectInfoDiv").style.display = "";
+        pageState = 0;
         break;
-       case 1:
+       case 1: <!-- Roadmap info -->
         document.getElementById("roadmapInfoDiv").style.display = "";
+        pageState = 1;
         break;
       }
       document.getElementById("infoDivContainer").style.display = "";      
@@ -413,9 +535,17 @@
    function printProjectInfo(id){
     let index = arrayFind(projectsJSON,id);
     //Print info
-    document.getElementById('projectInfoID').innerHTML = "ID: "+id;
+    if (projectsJSON[index].name != ""){
+     document.getElementById('projectInfoID').innerHTML = "ID: "+id;
+    } else {
+     document.getElementById('projectInfoID').innerHTML = "ID: none";
+    }    
     document.getElementById('projectInfoType').innerHTML = "Type: "+projectsJSON[index].type;
-    document.getElementById('projectInfoName').innerHTML = "Name: "+projectsJSON[index].name;
+    if (projectsJSON[index].name != ""){
+     document.getElementById('projectInfoName').innerHTML = "Name: "+projectsJSON[index].name;
+    } else {
+     document.getElementById('projectInfoName').innerHTML = "Name: "+projectsJSON[index].id;
+    }    
     document.getElementById('projectInfoStatus').innerHTML = "Status: "+projectsJSON[index].timeline.status[projectsJSON[index].timeline.status.length - 1];
     
     let idInfo = getInfoFromID(id);
@@ -454,45 +584,91 @@
     
     document.getElementById("roadmapInfoDate").innerHTML = "Release date: "+roadmapsJSON[index].date;
     
+    let rowClickHandler = function(row) {
+     return function() {
+      if (row.getElementsByTagName("td")[0].innerHTML != "none") {
+       projectSelected(row.getElementsByTagName("td")[0].innerHTML);
+      } else {
+       projectSelected(row.getElementsByTagName("td")[1].innerHTML);
+      }
+     };
+    };
+    
     let table = document.getElementById('roadmapInfoNATable');
     for(var i in roadmapsJSON[index].Projects.NextArrival){
      let row = table.insertRow();
      let id = row.insertCell();
-     id.innerHTML = roadmapsJSON[index].Projects.NextArrival[i].id;
+     if (roadmapsJSON[index].Projects.NextArrival[i].name != "") {
+      id.innerHTML = roadmapsJSON[index].Projects.NextArrival[i].id;
+     } else {
+      id.innerHTML = "none";
+     }     
      let name = row.insertCell();
-     name.innerHTML = roadmapsJSON[index].Projects.NextArrival[i].name;
+     if(roadmapsJSON[index].Projects.NextArrival[i].name != ""){
+      name.innerHTML = roadmapsJSON[index].Projects.NextArrival[i].name;
+     } else {
+      name.innerHTML = roadmapsJSON[index].Projects.NextArrival[i].id;
+     }     
      let type = row.insertCell();
      type.innerHTML = roadmapsJSON[index].Projects.NextArrival[i].type;
+     row.onclick = rowClickHandler(row);
     }
     table = document.getElementById('roadmapInfoUPTable');
     for(var i in roadmapsJSON[index].Projects.Upcoming){
      let row = table.insertRow();
      let id = row.insertCell();
-     id.innerHTML = roadmapsJSON[index].Projects.Upcoming[i].id;
+     if (roadmapsJSON[index].Projects.Upcoming[i].name != "") {
+      id.innerHTML = roadmapsJSON[index].Projects.Upcoming[i].id;
+     } else {
+      id.innerHTML = "none";
+     }     
      let name = row.insertCell();
-     name.innerHTML = roadmapsJSON[index].Projects.Upcoming[i].name;
+     if(roadmapsJSON[index].Projects.Upcoming[i].name != ""){
+      name.innerHTML = roadmapsJSON[index].Projects.Upcoming[i].name;
+     } else {
+      name.innerHTML = roadmapsJSON[index].Projects.Upcoming[i].id;
+     }
      let type = row.insertCell();
      type.innerHTML = roadmapsJSON[index].Projects.Upcoming[i].type;
+     row.onclick = rowClickHandler(row);
     }
     table = document.getElementById('roadmapInfoPRTable');
     for(var i in roadmapsJSON[index].Projects.InProduction){
      let row = table.insertRow();
      let id = row.insertCell();
-     id.innerHTML = roadmapsJSON[index].Projects.InProduction[i].id;
+     if (roadmapsJSON[index].Projects.InProduction[i].name != "") {
+      id.innerHTML = roadmapsJSON[index].Projects.InProduction[i].id;
+     } else {
+      id.innerHTML = "none";
+     }     
      let name = row.insertCell();
-     name.innerHTML = roadmapsJSON[index].Projects.InProduction[i].name;
+     if(roadmapsJSON[index].Projects.InProduction[i].name != ""){
+      name.innerHTML = roadmapsJSON[index].Projects.InProduction[i].name;
+     } else {
+      name.innerHTML = roadmapsJSON[index].Projects.InProduction[i].id;
+     }
      let type = row.insertCell();
      type.innerHTML = roadmapsJSON[index].Projects.InProduction[i].type;
+     row.onclick = rowClickHandler(row);
     }
     table = document.getElementById('roadmapInfoPLTable');
     for(var i in roadmapsJSON[index].Projects.InPlanning){
      let row = table.insertRow();
      let id = row.insertCell();
-     id.innerHTML = roadmapsJSON[index].Projects.InPlanning[i].id;
+     if (roadmapsJSON[index].Projects.InPlanning[i].name != "") {
+      id.innerHTML = roadmapsJSON[index].Projects.InPlanning[i].id;
+     } else {
+      id.innerHTML = "none";
+     }     
      let name = row.insertCell();
-     name.innerHTML = roadmapsJSON[index].Projects.InPlanning[i].name;
+     if(roadmapsJSON[index].Projects.InPlanning[i].name != ""){
+      name.innerHTML = roadmapsJSON[index].Projects.InPlanning[i].name;
+     } else {
+      name.innerHTML = roadmapsJSON[index].Projects.InPlanning[i].id;
+     }
      let type = row.insertCell();
      type.innerHTML = roadmapsJSON[index].Projects.InPlanning[i].type;
+     row.onclick = rowClickHandler(row);
     }
    }
 
@@ -606,6 +782,8 @@
    }
 
    function projectSelected(id){
+    console.log(infoState+" "+pageState);
+    console.log("Project selected: "+id);
     if (infoState == 0 && pageState == 0){
      clearProjectInfo();
      printProjectInfo(id);
@@ -619,6 +797,7 @@
    
    function roadmapSelected(date){
     console.log(infoState+" "+pageState);
+    console.log("Roadmap selected: "+date);
     if (infoState == 0 && pageState == 1){
      clearRoadmapInfo();
      printRoadmapInfo(date);
